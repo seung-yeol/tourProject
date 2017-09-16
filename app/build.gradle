@@ -4,8 +4,8 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
     defaultConfig {
-        applicationId "com.tour.uiux.tourproject"
-        minSdkVersion 16
+        applicationId "kr.ac.jejunu.ux.tourapp"
+        minSdkVersion 19
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
