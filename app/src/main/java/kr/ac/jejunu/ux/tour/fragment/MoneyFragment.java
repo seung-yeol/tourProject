@@ -1,4 +1,4 @@
-package kr.ac.jejunu.ux.tourapp.fragment;
+package kr.ac.jejunu.ux.tour.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -12,6 +12,11 @@ import android.view.ViewGroup;
  */
 
 public class MoneyFragment extends Fragment {
+    public static MoneyFragment newInstance(){
+        MoneyFragment Instance = new MoneyFragment();
+        return Instance;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -25,9 +30,6 @@ public class MoneyFragment extends Fragment {
 
     }
 
-    public static MoneyFragment newInstance(){
-        MoneyFragment Instance = new MoneyFragment();
-        return Instance;
-    }
+
 
 }

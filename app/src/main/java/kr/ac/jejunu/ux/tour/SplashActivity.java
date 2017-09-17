@@ -1,15 +1,15 @@
-package kr.ac.jejunu.ux.tourapp;
+package kr.ac.jejunu.ux.tour;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 /**
  * Created by HJ on 2017-09-17.
  *
  */
 
-public class SplashActivity extends Activity {
+public class SplashActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState){

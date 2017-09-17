@@ -1,4 +1,4 @@
-package kr.ac.jejunu.ux.tourapp.fragment;
+package kr.ac.jejunu.ux.tour.fragment;
 
 import android.app.Fragment;
 import android.view.View;

@@ -1,4 +1,4 @@
-package kr.ac.jejunu.ux.tourapp;
+package kr.ac.jejunu.ux.tour;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

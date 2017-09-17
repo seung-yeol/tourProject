@@ -1,4 +1,4 @@
-package kr.ac.jejunu.ux.tourapp;
+package kr.ac.jejunu.ux.tour;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -17,14 +17,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import kr.ac.jejunu.ux.tourapp.fragment.CommunityFragment;
-import kr.ac.jejunu.ux.tourapp.fragment.DiaryFragment;
-import kr.ac.jejunu.ux.tourapp.fragment.HomeFragment;
-import kr.ac.jejunu.ux.tourapp.fragment.SettingFragment;
+import kr.ac.jejunu.ux.tour.fragment.CommunityFragment;
+import kr.ac.jejunu.ux.tour.fragment.DiaryFragment;
+import kr.ac.jejunu.ux.tour.fragment.HomeFragment;
+import kr.ac.jejunu.ux.tour.fragment.MoneyFragment;
+import kr.ac.jejunu.ux.tour.fragment.SettingFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,12 +96,10 @@ public class MainActivity extends AppCompatActivity
         Log.e("뭘까", "onNavigationItemSelected: " + id);
         if (id == R.id.nav_home) {
             newFragment = HomeFragment.newInstance();
-            Log.e("뭔데", "onNavigationItemSelected: 0");
         } else if (id == R.id.nav_diary) {
             newFragment = DiaryFragment.newInstance();
-            Log.e("뭔데", "onNavigationItemSelected: 1");
         } else if (id == R.id.nav_money) {
-            Log.e("뭔데", "onNavigationItemSelected: 2");
+            newFragment = MoneyFragment.newInstance();
         } else if (id == R.id.nav_community) {
             newFragment = CommunityFragment.newInstance();
         } else if (id == R.id.nav_setting) {

@@ -2,4 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:textSize="20dp"
+        android:text="https://github.com/PhilJay/MPAndroidChart 의 pie차트를 이용하여
+                그래프를 표현해 줄 예정." />
 </LinearLayout>

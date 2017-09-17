@@ -1,4 +1,4 @@
-package kr.ac.jejunu.ux.tourapp;
+package kr.ac.jejunu.ux.tour;
 
 import org.junit.Test;
 
