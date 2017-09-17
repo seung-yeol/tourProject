@@ -25,6 +25,7 @@ import kr.ac.jejunu.ux.tourapp.fragment.SettingFragment;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,13 +93,13 @@ public class MainActivity extends AppCompatActivity
         Fragment newFragment = HomeFragment.newInstance();
         // Handle navigation view item clicks here.
 
-        Log.e("뭘까", "onNavigationItemSelected: " + id );
+        Log.e("뭘까", "onNavigationItemSelected: " + id);
         if (id == R.id.nav_home) {
             newFragment = HomeFragment.newInstance();
-            Log.e("뭔데", "onNavigationItemSelected: 0" );
+            Log.e("뭔데", "onNavigationItemSelected: 0");
         } else if (id == R.id.nav_diary) {
             newFragment = DiaryFragment.newInstance();
-            Log.e("뭔데", "onNavigationItemSelected: 1" );
+            Log.e("뭔데", "onNavigationItemSelected: 1");
         } else if (id == R.id.nav_money) {
             Log.e("뭔데", "onNavigationItemSelected: 2");
         } else if (id == R.id.nav_community) {
