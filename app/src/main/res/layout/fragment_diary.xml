@@ -1,71 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:andorid="http://schemas.android.com/tools"
-    android:background="#E0E0E0"
+
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1">
+        android:orientation="horizontal">
 
-        <Button
+        <ImageButton
             android:id="@+id/diary_btn1"
             android:layout_width="130dp"
             android:layout_height="130dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/diary1"
+            android:scaleType="fitXY"/>
 
-            android:background="@mipmap/img_diary1" />
-
-        <Button
+        <ImageButton
+            android:scaleType="fitXY"
             android:id="@+id/diary_btn2"
-            android:layout_width="115dp"
-            android:layout_height="122dp"
-            andorid:background="@drawable/diary2"
-            android:layout_weight="0.13" />
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:background="@android:color/transparent"
+            andorid:src="@drawable/diary2" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <Button
+        <ImageButton
             android:id="@+id/diary_btn3"
             android:layout_width="130dp"
             android:layout_height="130dp"
-            andorid:background ="@mipmap/img_diary3" />
+            android:scaleType="fitXY"
+            andorid:src ="@drawable/diary3"
+            android:background="@android:color/transparent"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/diary_btn4"
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:layout_alignLeft="@+id/diary_btn2"
             android:layout_alignStart="@+id/diary_btn2"
             android:layout_alignTop="@+id/diary_btn3"
-            andorid:background ="@mipmap/img_diary4" />
+            android:scaleType="fitXY"
+            andorid:src ="@drawable/diary12"
+            android:background="@android:color/transparent"/>
 
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <Button
+
+        <ImageButton
             android:id="@+id/diary_btn5"
             android:layout_width="130dp"
             android:layout_height="130dp"
-            andorid:background ="@mipmap/img_diary5" />
+            android:scaleType="fitXY"
+            andorid:src="@drawable/diary12"
+            android:background="@android:color/transparent"/>
 
-        <Button
+        <ImageButton
+            android:scaleType="fitXY"
             android:id="@+id/diary_btn6"
             android:layout_width="130dp"
             android:layout_height="130dp"
-            andorid:background="@mipmap/img_diary6" />
+            andorid:src="@mipmap/img_diary6"
+            android:background="@android:color/transparent"/>
 
     </LinearLayout>
 

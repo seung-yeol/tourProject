@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import kr.ac.jejunu.ux.tour.R;
 
@@ -27,12 +26,12 @@ public class DiaryFragment extends Fragment {
         v = inflater.inflate( R.layout.fragment_diary, container, false );
         super.onCreateView(inflater, container, savedInstanceState);
 
-        Button btn1 = (Button) v.findViewById(R.id.diary_btn1);
+        /*Button btn1 = (Button) v.findViewById(R.id.diary_btn1);
         Button btn2 = (Button) v.findViewById(R.id.diary_btn2);
         Button btn3 = (Button) v.findViewById(R.id.diary_btn3);
         Button btn4 = (Button) v.findViewById(R.id.diary_btn4);
-        Button btn5 = (Button) v.findViewById(R.id.diary_btn5);
-        Button btn6 = (Button) v.findViewById(R.id.diary_btn6);
+        ImageButton btn5 = (ImageButton) v.findViewById(R.id.diary_btn5);
+        Button btn6 = (Button) v.findViewById(R.id.diary_btn6);*/
 
         return v;
     }

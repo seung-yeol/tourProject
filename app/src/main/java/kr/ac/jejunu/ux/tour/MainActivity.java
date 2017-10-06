@@ -12,7 +12,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,6 +28,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -50,6 +50,11 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment_container, HomeFragment.newInstance(ft));
+        ft.commit();
+
     }
 
     @Override
@@ -87,27 +92,26 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-
+        Fragment newFragment;
         int id = item.getItemId();
         // Handle navigation view item clicks here.
-        Fragment newFragment = HomeFragment.newInstance();
-        // Handle navigation view item clicks here.
 
-        Log.e("뭘까", "onNavigationItemSelected: " + id);
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
         if (id == R.id.nav_home) {
-            newFragment = HomeFragment.newInstance();
+            newFragment = HomeFragment.newInstance( fragmentTransaction);
         } else if (id == R.id.nav_diary) {
             newFragment = DiaryFragment.newInstance();
         } else if (id == R.id.nav_money) {
             newFragment = MoneyFragment.newInstance();
         } else if (id == R.id.nav_community) {
             newFragment = CommunityFragment.newInstance();
-        } else if (id == R.id.nav_setting) {
+        } else /*if (id == R.id.nav_setting)*/ {
             newFragment = SettingFragment.newInstance();
         }
 
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
         fragmentTransaction.replace(R.id.fragment_container, newFragment);
         fragmentTransaction.commit();
 
