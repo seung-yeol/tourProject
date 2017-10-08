@@ -11,4 +11,12 @@
             이용하여 설정리스트 만들 예정"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/tendency_go"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:text="가자"/>
 </RelativeLayout>
