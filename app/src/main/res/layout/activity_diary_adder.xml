@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/diary_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:hint="제목을 적어주세요"
+        android:layout_alignEnd="@+id/diary_photo"
+        android:layout_alignStart="@+id/diary_photo" />
+
+    <ImageView
+        android:id="@+id/diary_photo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_below="@+id/diary_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:background="#5784"
+        android:scaleType="fitXY"/>
+
+    <Button
+        android:id="@+id/select_picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/diary_photo"
+        android:layout_alignStart="@+id/diary_photo"
+        android:layout_alignEnd="@+id/diary_photo"
+        android:text="사진선택하기"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2017년 9월 16일"
+        android:layout_marginStart="32dp"
+        android:id="@+id/diary_date"
+        android:textSize="20dp"
+        android:layout_below="@+id/diary_photo"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="56dp" />
+
+    <EditText
+        android:id="@+id/diary_text"
+        android:hint="내용을 적어주세요"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/diary_date"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="38dp"
+        android:layout_alignStart="@+id/diary_date"
+        android:maxHeight="200dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="확인"
+        android:layout_below="@+id/diary_text"
+        android:layout_alignEnd="@+id/diary_text" />
+</RelativeLayout>

@@ -17,7 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import kr.ac.jejunu.ux.tour.fragment.CommunityFragment;
-import kr.ac.jejunu.ux.tour.fragment.DiaryFragment;
+import kr.ac.jejunu.ux.tour.fragment.diary_fragment.DiaryFragment;
 import kr.ac.jejunu.ux.tour.fragment.HomeFragment;
 import kr.ac.jejunu.ux.tour.fragment.MoneyFragment;
 import kr.ac.jejunu.ux.tour.fragment.SettingFragment;
