@@ -23,11 +23,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
+
+import kr.ac.jejunu.ux.tour.util.DBUtil;
 
 /**
  * Created by Osy on 2017-10-09.
@@ -41,9 +44,11 @@ public class DiaryAdderActivity extends Activity {
     private final static int REQUEST_EXTERNAL_STORAGE = 3;
     private final static int REQUEST_CAMERA = 4;
 
+    private String absolutePath;
     private Uri imageCaptureUri;
     private ImageView diaryPhoto;
-    private String absolutePath;
+    private EditText diaryTitle;
+    private EditText diaryText;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,9 +58,12 @@ public class DiaryAdderActivity extends Activity {
         final Context context = this;
 
         diaryPhoto = findViewById( R.id.diary_photo);
-        Button setPhotoBtn = findViewById( R.id.select_picture);
-        EditText diaryTitle = findViewById( R.id.diary_title);
-        TextView diaryText = findViewById( R.id.diary_text);
+        diaryTitle = findViewById( R.id.diary_title);
+        diaryText = findViewById( R.id.diary_text);
+
+        Button setPhotoBtn = findViewById( R.id.select_picture );
+        Button diaryConfirm = findViewById( R.id.diary_confirm );
+        diaryConfirm.setOnClickListener( clickListener );
 
         setPhotoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,25 +151,6 @@ public class DiaryAdderActivity extends Activity {
         }, 100);
     }
 
-    //앨범에서 이미지 가져오기
-    public void getFromAlbum(){
-        Intent intent = new Intent( Intent.ACTION_PICK);
-        intent.setType( MediaStore.Images.Media.CONTENT_TYPE);
-        startActivityForResult( intent, PICK_FROM_ALBUM);
-    }
-    //촬영해서 이미지 가져오기
-    public void getFromCamera(){
-        Intent intent = new Intent( MediaStore.ACTION_IMAGE_CAPTURE);
-
-        //임시로 사용할 파일의 경로를 생성
-        String url = "tmp_"+ String.valueOf( System.currentTimeMillis())+".jpg";
-        imageCaptureUri = Uri.fromFile( new File( Environment.getExternalStorageDirectory(), url));
-
-        intent.putExtra( MediaStore.EXTRA_OUTPUT, imageCaptureUri);
-        startActivityForResult( intent, PICK_FROM_CAMERA);
-    }
-
-
     @Override
     protected void onActivityResult( int requestCode, int resultCode, Intent data) {
         super.onActivityResult( requestCode, resultCode, data);
@@ -208,6 +197,25 @@ public class DiaryAdderActivity extends Activity {
         }
     }
 
+
+    //앨범에서 이미지 가져오기
+    public void getFromAlbum(){
+        Intent intent = new Intent( Intent.ACTION_PICK);
+        intent.setType( MediaStore.Images.Media.CONTENT_TYPE);
+        startActivityForResult( intent, PICK_FROM_ALBUM);
+    }
+    //촬영해서 이미지 가져오기
+    public void getFromCamera(){
+        Intent intent = new Intent( MediaStore.ACTION_IMAGE_CAPTURE);
+
+        //임시로 사용할 파일의 경로를 생성
+        String url = "tmp_"+ String.valueOf( System.currentTimeMillis())+".jpg";
+        imageCaptureUri = Uri.fromFile( new File( Environment.getExternalStorageDirectory(), url));
+
+        intent.putExtra( MediaStore.EXTRA_OUTPUT, imageCaptureUri);
+        startActivityForResult( intent, PICK_FROM_CAMERA);
+    }
+
     private Intent cropping(){
         //이미지를 가져온 이후의 리사이즈할 이미지 크기를 결정함.
         //이후에 이미지 크롭 어플리케이션을 호출함.
@@ -248,4 +256,34 @@ public class DiaryAdderActivity extends Activity {
             e.printStackTrace();
         }
     }
+
+    private View.OnClickListener clickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            if ( diaryTitle.getText().toString().length() == 0){
+                Toast.makeText(DiaryAdderActivity.this, "제목을 적어주세요!", Toast.LENGTH_SHORT).show();
+            }
+            else if ( diaryText.getText().toString().length() == 0){
+                Toast.makeText(DiaryAdderActivity.this, "내용을 적어주세요!", Toast.LENGTH_SHORT).show();
+            }
+            else if ( absolutePath.length() == 0){
+                Toast.makeText(DiaryAdderActivity.this, "사진을 선택해주세요!", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                String title = diaryTitle.getText().toString();
+                String sentence = diaryText.getText().toString();
+                String url = absolutePath;
+
+                ArrayList<String> arrayList = new ArrayList<>(3);
+                arrayList.add(title);
+                arrayList.add(sentence);
+                arrayList.add(url);
+
+                DBUtil db = DBUtil.getInstance();
+                db.insertData( DBUtil.TABLE_DIARY, arrayList);
+
+                finish();
+            }
+        }
+    };
 }

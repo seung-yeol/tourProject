@@ -19,6 +19,10 @@ import kr.ac.jejunu.ux.tour.util.DBUtil;
  */
 
 public class DiaryFragment extends Fragment {
+    private RecyclerView recyclerView;
+    private DiaryAdapter adapter;
+    private ArrayList<ArrayList> allData;
+
     private View v;
     public static DiaryFragment newInstance(){
         DiaryFragment Instance = new DiaryFragment();
@@ -38,16 +42,24 @@ public class DiaryFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ArrayList<ArrayList> allData;
-
         DBUtil dbUtil = DBUtil.getInstance( getActivity(), "TOUR", null, 1);
         allData = dbUtil.getAllData( DBUtil.TABLE_DIARY);
 
-        DiaryAdapter adapter = new DiaryAdapter( getActivity() ,allData);
+        adapter = new DiaryAdapter( getActivity() , allData );
 
-        RecyclerView recyclerView = view.findViewById(R.id.grid_recycler);
+        recyclerView = view.findViewById(R.id.grid_recycler);
         recyclerView.setLayoutManager( new GridLayoutManager( getActivity(), 3 ));
         recyclerView.setAdapter( adapter);
+    }
+
+    //다이어리 추가하고 다시 돌아오면 데이터 추가된거 바뀐거 반영
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        allData = DBUtil.getInstance().getAllData( DBUtil.TABLE_DIARY);
+        adapter.changeData( allData);
+        adapter.notifyDataSetChanged();
     }
 
     class ImageClickLister implements View.OnClickListener{

@@ -23,6 +23,12 @@ public class DBUtil extends SQLiteOpenHelper {
         }
         return INSTANCE;
     }
+    public static DBUtil getInstance( ) {
+        if (INSTANCE == null){
+            throw new NullPointerException();
+        }
+        return INSTANCE;
+    }
 
     private DBUtil( Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -35,13 +41,11 @@ public class DBUtil extends SQLiteOpenHelper {
                 "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "NAME TEXT NOT NULL, " +
                 "STORY TEXT, " +
-                "DATE TEXT, " +
                 "PATH TEXT NOT NULL);");
         //성향 내용 넣을 테이블
         db.execSQL("CREATE TABLE " + TABLE_TENDENCY + "(" +
                 "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "NAME TEXT NOT NULL);");
-
     }
 
     @Override
@@ -57,7 +61,7 @@ public class DBUtil extends SQLiteOpenHelper {
         }
 
         SQLiteDatabase db = getWritableDatabase();
-        String sql = "INSERT INTO"+ tableName +"VALUES(NULL" + values + "');";
+        String sql = "INSERT INTO "+ tableName +" VALUES(NULL" + values + ");";
         db.execSQL(sql);
     }
 
@@ -74,16 +78,16 @@ public class DBUtil extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("select * from '"+ tableName + "';", null);
         cursor.moveToNext();
 
-        ArrayList<ArrayList> allData = new ArrayList<>();
-        ArrayList<String> data = new ArrayList<>();
+        ArrayList<ArrayList> allData = new ArrayList<>( cursor.getCount());
+        ArrayList<String> data;
 
         for (int k = 0 ; k < cursor.getCount(); k++){
+            data  = new ArrayList<>( cursor.getColumnCount());
             for ( int i = 1 ; i < cursor.getColumnCount() ; i++){
                 data.add( cursor.getString(i));
-
-                Log.e( this.toString(), "getData: " + cursor.getString(i) );
             }
             allData.add( data);
+            cursor.moveToNext();
         }
 
         cursor.close();
